@@ -6,7 +6,7 @@ async: optional
 metadata:
   documentationUrl: https://mariadb.com/kb/en/mariadb/documentation/
   longDescription: Deploys a bindable mariadb instance
-  dependencies: ['rhscl/mariadb-10-rhel7']
+  dependencies: ['registry.access.redhat.com/rhscl/mariadb-10-rhel7']
   displayName: RHSCL MariaDB (APB)
   console.openshift.io/iconClass: icon-mariadb
 plans:
