@@ -9,6 +9,7 @@ metadata:
   dependencies: ['registry.access.redhat.com/rhscl/mariadb-10-rhel7']
   displayName: RHSCL MariaDB (APB)
   console.openshift.io/iconClass: icon-mariadb
+  providerDisplayName: "Red Hat, Inc."
 plans:
   - name: default
     description: This plan deploys a single MariaDB instance
