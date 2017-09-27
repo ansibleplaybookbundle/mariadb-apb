@@ -4,7 +4,6 @@
   k8s_v1_persistent_volume_claim:
     name: "{{ service_name }}"
     namespace: '{{ namespace }}'
-    state: present
     access_modes:
       - ReadWriteOnce
     resources_requests:
