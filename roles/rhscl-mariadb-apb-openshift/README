@@ -1,7 +1,7 @@
 mariadb-APB-Openshift
 ===
 
-Automates the deployment of mariadb-apb to Openshift.
+Automates the provision/deprovision of mariadb-apb to Openshift.
 
 
 Requirements

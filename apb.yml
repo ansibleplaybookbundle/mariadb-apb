@@ -1,48 +1,61 @@
+---
+## Shared parameters
+_params: &_params
+  - name: mysql_database
+    default: admin
+    type: string
+    description: MariaDB default database name
+    title: MariaDB Database name
+    required: true
+  - name: mysql_root_password
+    default: admin
+    type: string
+    description: A random alphanumeric string if left blank
+  - name: mysql_user
+    default: admin
+    type: string
+    description: MariaDB User
+    required: true
+  - name: mysql_password
+    default: admin
+    type: string
+    description: A random alphanumeric string if left blank
+    required: false
+  - name: mariadb_version
+    default: "10.0"
+    enum: ['10.0', '10.1']
+    type: enum
+    title: MariaDB Version
+    required: true
+
 name: rhscl-mariadb-apb
 image: ansibleplaybookbundle/rhscl-mariadb-apb
 description: Mariadb apb implementation
-bindable: True
+bindable: true
 async: optional
 metadata:
-  documentationUrl: https://mariadb.com/kb/en/mariadb/documentation/
-  longDescription: Deploys a bindable mariadb instance
+  documentationUrl: "https://mariadb.com/kb/en/mariadb/documentation/"
+  longDescription: "Deploys a bindable mariadb instance"
   dependencies: ['registry.access.redhat.com/rhscl/mariadb-10-rhel7']
-  displayName: RHSCL MariaDB (APB)
+  displayName: "RHSCL MariaDB (APB)"
   console.openshift.io/iconClass: icon-mariadb
   providerDisplayName: "Red Hat, Inc."
 plans:
-  - name: default
-    description: This plan deploys a single MariaDB instance
-    free: True
+  - name: dev
+    description: This plan deploys a single MariaDB instance with ephemeral storage
+    free: true
+    default: true
     metadata:
-      displayName: Default
+      displayName: Development
       cost: $0.00
-    parameters:
-      - name: mysql_database
-        default: admin
-        type: string
-        description: MariaDB default database name
-        title: MariaDB Database name
-        required: True
-      - name: mysql_root_password
-        default: admin
-        type: string
-        description: A random alphanumeric string if left blank
-      - name: mysql_user
-        default: admin
-        type: string
-        description: MariaDB User
-        required: True
-      - name: mysql_password
-        default: admin
-        type: string
-        description: A random alphanumeric string if left blank
-      - name: mariadb_version
-        default: "10.0"
-        enum: ['10.0', '10.1']
-        type: enum
-        title: MariaDB Version
-        required: True
+    parameters: *_params
+  - name: dev
+    description: This plan deploys a single MariaDB instance with 10 GiB of persistent storage
+    free: true
+    metadata:
+      displayName: Production
+      cost: $0.00
+    parameters: *_params
 required:
   - mariadb_version
   - mysql_database

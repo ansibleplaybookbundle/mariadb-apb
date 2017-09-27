@@ -1,43 +1,27 @@
-- name: create volumes
+---
+
+- name: set volume claim state to {{ state }}
   k8s_v1_persistent_volume_claim:
-    name: rhscl-mariadb
+    name: "{{ service_name }}"
     namespace: '{{ namespace }}'
     state: present
     access_modes:
       - ReadWriteOnce
     resources_requests:
-      storage: '{{ mariadb_volume_size }}'
+      storage: '{{ volume_size }}'
     state: "{{ state }}"
 
-- name: create service
-  k8s_v1_service:
-    name: rhscl-mariadb
-    namespace: '{{ namespace }}'
-    state: present
-    labels:
-      app: rhscl-mariadb-apb
-      service: rhscl-mariadb
-    selector:
-      app: rhscl-mariadb-apb
-      service: rhscl-mariadb
-    ports:
-    - name: port-3306
-      port: 3306
-      protocol: TCP
-      target_port: 3306
-  register: mariadb_service
-
-- name: create deployment config
+- name: set mariadb deployment using persistent storage to {{ state }}
   openshift_v1_deployment_config:
-    name: rhscl-mariadb
+    name: "{{ service_name }}"
     namespace: '{{ namespace }}'
     labels:
       app: rhscl-mariadb-apb
-      service: rhscl-mariadb
+      service: "{{ service_name }}"
     replicas: 1
     selector:
       app: rhscl-mariadb-apb
-      service: rhscl-mariadb
+      service: "{{ service_name }}"
     strategy_type: Rolling
     strategy_rolling_params:
       interval_seconds: 1
@@ -47,7 +31,7 @@
       update_period_seconds: 1
     spec_template_metadata_labels:
       app: rhscl-mariadb-apb
-      service: rhscl-mariadb
+      service: "{{ service_name }}"
     containers:
     - env:
       - name: MYSQL_ROOT_PASSWORD
@@ -60,7 +44,7 @@
         value: '{{ mysql_database }}'
       image: "{{ image }}"
       image_pull_policy: IfNotPresent
-      name: rhscl-mariadb
+      name: "{{ service_name }}"
       ports:
       - container_port: 3306
         protocol: TCP
@@ -69,26 +53,17 @@
       termination_message_path: /dev/termination-log
       volume_mounts:
       - mount_path: /var/lib/mysql
-        name: rhscl-mariadb
+        name: mariadb-data
       working_dir: /
     dns_policy: ClusterFirst
     restart_policy: Always
     termination_grace_period_seconds: 30
     volumes:
-    - name: rhscl-mariadb
+    - name: mariadb-data
       persistent_volume_claim:
-        claim_name: rhscl-mariadb
+        claim_name: "{{ service_name }}"
       test: false
-      triggers:
-      - type: ConfigChange
+    triggers:
+    - type: ConfigChange
     state: "{{ state }}"
 
-- name: encode bind credentials
-  asb_encode_binding:
-    fields:
-      DB_TYPE: "mysql"
-      DB_HOST: "{{ mariadb_service.service.spec.cluster_ip }}"
-      DB_PORT: "3306"
-      DB_USER: "{{ mysql_user }}"
-      DB_PASSWORD: "{{ mysql_password }}"
-      DB_NAME: "{{ mysql_database }}"
