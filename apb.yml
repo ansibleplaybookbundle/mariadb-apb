@@ -49,7 +49,7 @@ plans:
       displayName: Development
       cost: $0.00
     parameters: *_params
-  - name: dev
+  - name: prod
     description: This plan deploys a single MariaDB instance with 10 GiB of persistent storage
     free: true
     metadata:
