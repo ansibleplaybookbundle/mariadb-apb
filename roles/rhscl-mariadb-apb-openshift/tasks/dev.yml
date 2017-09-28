@@ -1,0 +1,56 @@
+---
+
+- name: set mariadb deployment using persistent storage to {{ state }}
+  openshift_v1_deployment_config:
+    name: "{{ service_name }}"
+    namespace: '{{ namespace }}'
+    labels:
+      app: rhscl-mariadb-apb
+      service: "{{ service_name }}"
+    replicas: 1
+    selector:
+      app: rhscl-mariadb-apb
+      service: "{{ service_name }}"
+    strategy_type: Rolling
+    strategy_rolling_params:
+      interval_seconds: 1
+      max_surge: 25%
+      max_unavailable: 25%
+      timeout_seconds: 600
+      update_period_seconds: 1
+    spec_template_metadata_labels:
+      app: rhscl-mariadb-apb
+      service: "{{ service_name }}"
+    containers:
+    - env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: '{{ mysql_root_password }}'
+      - name: MYSQL_USER
+        value: '{{ mysql_user }}'
+      - name: MYSQL_PASSWORD
+        value: '{{ mysql_root_password }}'
+      - name: MYSQL_DATABASE
+        value: '{{ mysql_database }}'
+      image: "{{ image }}"
+      image_pull_policy: IfNotPresent
+      name: "{{ service_name }}"
+      ports:
+      - container_port: 3306
+        protocol: TCP
+      resources: {}
+      security_context: {}
+      termination_message_path: /dev/termination-log
+      volume_mounts:
+      - mount_path: /var/lib/mysql
+        name: mariadb-data
+      working_dir: /
+    dns_policy: ClusterFirst
+    restart_policy: Always
+    termination_grace_period_seconds: 30
+    volumes:
+    - name: mariadb-data
+      emptyDir: []
+    triggers:
+    - type: ConfigChange
+    state: "{{ state }}"
+
