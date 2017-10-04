@@ -5,7 +5,7 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.0.1
+Version:	1.0.2
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
@@ -32,6 +32,9 @@ mv roles %{buildroot}/opt/ansible/roles
 /opt/ansible/roles
 
 %changelog
+* Wed Oct 04 2017 Jason Montleon <jmontleo@redhat.com> 1.0.2-1
+- Bug 1498185 - Move version label onto APB spec (dymurray@redhat.com)
+
 * Fri Sep 29 2017 Jason Montleon <jmontleo@redhat.com> 1.0.1-1
 - new package built with tito
 
