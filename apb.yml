@@ -30,7 +30,6 @@ _params: &_params
 
 version: 1.0
 name: rhscl-mariadb-apb
-image: ansibleplaybookbundle/rhscl-mariadb-apb
 description: Mariadb apb implementation
 bindable: true
 async: optional
