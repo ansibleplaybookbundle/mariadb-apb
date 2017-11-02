@@ -33,13 +33,16 @@ name: rhscl-mariadb-apb
 description: Mariadb apb implementation
 bindable: true
 async: optional
+tags:
+  - databases
+  - mariadb
 metadata:
   documentationUrl: "https://mariadb.com/kb/en/mariadb/documentation/"
   longDescription: "Deploys a bindable mariadb instance"
   dependencies:
     - 'registry.access.redhat.com/rhscl/mariadb-100-rhel7'
     - 'registry.access.redhat.com/rhscl/mariadb-101-rhel7'
-  displayName: "RHSCL MariaDB (APB)"
+  displayName: "MariaDB (APB)"
   console.openshift.io/iconClass: icon-mariadb
   providerDisplayName: "Red Hat, Inc."
 plans:
