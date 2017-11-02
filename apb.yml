@@ -8,19 +8,19 @@ _params: &_params
     title: MariaDB Database name
     required: true
   - name: mysql_root_password
-    default: admin
     type: string
     description: A random alphanumeric string if left blank
+    display_type: password
   - name: mysql_user
     default: admin
     type: string
     description: MariaDB User
     required: true
   - name: mysql_password
-    default: admin
     type: string
     description: A random alphanumeric string if left blank
     required: false
+    display_type: password
   - name: mariadb_version
     default: "10.0"
     enum: ['10.0', '10.1']
