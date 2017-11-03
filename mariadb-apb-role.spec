@@ -5,7 +5,7 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.0.3
+Version:	1.0.4
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
@@ -32,6 +32,12 @@ mv roles %{buildroot}/opt/ansible/roles
 /opt/ansible/roles
 
 %changelog
+* Fri Nov 03 2017 Jason Montleon <jmontleo@redhat.com> 1.0.4-1
+- Bug 1509018 - Added tags to show up under the right tab in the UI
+  (cchase@redhat.com)
+- Bug 1508994 - Hide password with display_type: password (cchase@redhat.com)
+- Bug 1508278 - Use include_tasks instead of include (cchase@redhat.com)
+
 * Tue Oct 10 2017 Jason Montleon <jmontleo@redhat.com> 1.0.3-1
 - Update dockerfiles (david.j.zager@gmail.com)
 - Bug 1500364 - Update apb.yml with all dependent images
