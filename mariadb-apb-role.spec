@@ -5,7 +5,7 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.0.5
+Version:	1.0.6
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
@@ -32,6 +32,9 @@ mv roles %{buildroot}/opt/ansible/roles
 /opt/ansible/roles
 
 %changelog
+* Fri Nov 03 2017 Jason Montleon <jmontleo@redhat.com> 1.0.6-1
+- Bug 1509476 - Generate password broken when left blank. (cchase@redhat.com)
+
 * Fri Nov 03 2017 Jason Montleon <jmontleo@redhat.com> 1.0.5-1
 - Bug 1508278 - Revert to using include for now for Ansible 2.3.2
   compatibility. (cchase@redhat.com)
