@@ -38,7 +38,7 @@
       - name: MYSQL_USER
         value: '{{ mysql_user }}'
       - name: MYSQL_PASSWORD
-        value: '{{ mysql_root_password }}'
+        value: '{{ mysql_password }}'
       - name: MYSQL_DATABASE
         value: '{{ mysql_database }}'
       image: "{{ image }}"
