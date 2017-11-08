@@ -5,7 +5,7 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.0.8
+Version:	1.0.9
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
@@ -32,6 +32,10 @@ mv roles %{buildroot}/opt/ansible/roles
 /opt/ansible/roles
 
 %changelog
+* Wed Nov 08 2017 Jason Montleon <jmontleo@redhat.com> 1.0.9-1
+- Bug 1511077 - user password was incorrectly using root_password
+  (cchase@redhat.com)
+
 * Tue Nov 07 2017 Jason Montleon <jmontleo@redhat.com> 1.0.8-1
 - Bug 1510599 - use service name for binding DB_HOST instead of cluster IP
   (cchase@redhat.com)
