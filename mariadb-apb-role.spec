@@ -5,7 +5,7 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.0.9
+Version:	1.0.10
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
@@ -32,6 +32,9 @@ mv roles %{buildroot}/opt/ansible/roles
 /opt/ansible/roles
 
 %changelog
+* Wed Nov 08 2017 jesus m. rodriguez <jesusr@redhat.com> 1.0.10-1
+- Bug 1511258 - Properly delete mariadb service. (#13) (cchase@redhat.com)
+
 * Wed Nov 08 2017 Jason Montleon <jmontleo@redhat.com> 1.0.9-1
 - Bug 1511077 - user password was incorrectly using root_password
   (cchase@redhat.com)
