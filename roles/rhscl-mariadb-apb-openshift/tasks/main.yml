@@ -9,7 +9,7 @@
   k8s_v1_service:
     name: "{{ service_name }}"
     namespace: '{{ namespace }}'
-    state: present
+    state: "{{ state }}"
     labels:
       app: rhscl-mariadb-apb
       service: "{{ service_name }}"
