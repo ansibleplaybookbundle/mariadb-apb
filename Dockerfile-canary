@@ -1,4 +1,4 @@
-FROM ansibleplaybookbundle/apb-base
+FROM ansibleplaybookbundle/apb-base:canary
 MAINTAINER Ansible Playbook Bundle Community
 
 LABEL "com.redhat.apb.spec"=\
