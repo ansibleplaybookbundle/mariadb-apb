@@ -5,7 +5,7 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.1.0
+Version:	1.1.1
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
@@ -32,6 +32,11 @@ mv roles %{buildroot}/opt/ansible/roles
 /opt/ansible/roles
 
 %changelog
+* Mon Dec 04 2017 Jason Montleon <jmontleo@redhat.com> 1.1.1-1
+- updates for repo and container name change (jmontleo@redhat.com)
+- specify tags in Dockerfiles (jmontleo@redhat.com)
+- bump release (#14) (jmrodri@gmail.com)
+
 * Wed Nov 08 2017 jesus m. rodriguez <jesusr@redhat.com> 1.0.10-1
 - Bug 1511258 - Properly delete mariadb service. (#13) (cchase@redhat.com)
 
