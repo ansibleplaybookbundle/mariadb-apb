@@ -29,7 +29,7 @@ _params: &_params
     required: true
 
 version: 1.0
-name: rhscl-mariadb-apb
+name: mariadb-apb
 description: Mariadb apb implementation
 bindable: true
 async: optional

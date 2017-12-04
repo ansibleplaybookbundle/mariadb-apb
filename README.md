@@ -4,7 +4,7 @@ mariadb-apb
 An apb for deploying [mariadb](https://www.mariadb.org/about/).  
 
 ## What it does
-* Deploys rhscl-mariadb.
+* Deploys mariadb.
 
 ## Requirements
 
