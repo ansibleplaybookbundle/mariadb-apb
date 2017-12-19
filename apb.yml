@@ -11,22 +11,24 @@ _params: &_params
     type: string
     description: A random alphanumeric string if left blank
     display_type: password
+    required: true
   - name: mysql_user
     default: admin
     type: string
-    description: MariaDB User
     required: true
+    description: MariaDB User
   - name: mysql_password
     type: string
     description: A random alphanumeric string if left blank
-    required: false
+    required: true
     display_type: password
   - name: mariadb_version
-    default: "10.0"
-    enum: ['10.0', '10.1']
+    default: "10.2"
+    enum: ['10.2' , '10.1', '10.0']
     type: enum
     title: MariaDB Version
     required: true
+    updatable: true
 
 version: 1.0
 name: mariadb-apb
@@ -42,6 +44,7 @@ metadata:
   dependencies:
     - 'registry.access.redhat.com/rhscl/mariadb-100-rhel7'
     - 'registry.access.redhat.com/rhscl/mariadb-101-rhel7'
+    - 'registry.access.redhat.com/rhscl/mariadb-102-rhel7'
   displayName: "MariaDB (APB)"
   console.openshift.io/iconClass: icon-mariadb
   providerDisplayName: "Red Hat, Inc."
@@ -54,6 +57,8 @@ plans:
       displayName: Development
       cost: $0.00
     parameters: *_params
+    updates_to:
+      - prod
   - name: prod
     description: This plan deploys a single MariaDB instance with 10 GiB of persistent storage
     free: true
@@ -61,8 +66,5 @@ plans:
       displayName: Production
       cost: $0.00
     parameters: *_params
-required:
-  - mariadb_version
-  - mysql_database
-  - mysql_user
-
+    updates_to:
+      - dev
