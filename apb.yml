@@ -34,7 +34,7 @@ description: Mariadb apb implementation
 bindable: true
 async: optional
 tags:
-  - databases
+  - database
   - mariadb
 metadata:
   documentationUrl: "https://mariadb.com/kb/en/mariadb/documentation/"
