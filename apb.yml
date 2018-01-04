@@ -6,6 +6,7 @@ _params: &_params
     type: string
     description: MariaDB default database name
     title: MariaDB Database name
+    pattern: "^[a-zA-Z0-9_]*[a-zA-Z_]+[a-zA-Z0-9_]*$"
     required: true
   - name: mysql_root_password
     type: string
@@ -15,6 +16,7 @@ _params: &_params
   - name: mysql_user
     default: admin
     type: string
+    pattern: "^[a-zA-Z0-9_]*[a-zA-Z_]+[a-zA-Z0-9_]*$"
     required: true
     description: MariaDB User
   - name: mysql_password
