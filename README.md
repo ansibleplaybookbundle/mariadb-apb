@@ -21,7 +21,7 @@ An apb for deploying [mariadb](https://www.mariadb.org/about/).
 `docker run --rm --net=host -v $HOME/.kube:/opt/apb/.kube:z -u $UID docker.io/ansibleplaybookbundle/mariadb-apb provision`
 
 ## Passing extra parameters
-`docker run --env "OPENSHIFT_TARGET=https://$TARGET:8443" --env "OPENSHIFT_TOKEN=$TOKEN" ansibleplaybookbundle/mariadb-apb provision --extra-vars "namespace=$NAMESPACE" --extra-vars "mysql_database=''" --extra-vars "mysql_root_password=''" --extra-vars "mysql_user=root"`
+`docker run --env "OPENSHIFT_TARGET=https://$TARGET:8443" --env "OPENSHIFT_TOKEN=$TOKEN" ansibleplaybookbundle/mariadb-apb provision --extra-vars "namespace=$NAMESPACE" --extra-vars "mariadb_database=''" --extra-vars "mariadb_root_password=''" --extra-vars "mariadb_user=root"`
 
 
 ## Tearing down the application

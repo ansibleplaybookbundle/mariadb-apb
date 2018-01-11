@@ -23,13 +23,13 @@
     containers:
     - env:
       - name: MYSQL_ROOT_PASSWORD
-        value: '{{ mysql_root_password }}'
+        value: '{{ mariadb_root_password }}'
       - name: MYSQL_USER
-        value: '{{ mysql_user }}'
+        value: '{{ mariadb_user }}'
       - name: MYSQL_PASSWORD
-        value: '{{ mysql_password }}'
+        value: '{{ mariadb_password }}'
       - name: MYSQL_DATABASE
-        value: '{{ mysql_database }}'
+        value: '{{ mariadb_database }}'
       image: "{{ image }}"
       image_pull_policy: IfNotPresent
       name: "{{ service_name }}"

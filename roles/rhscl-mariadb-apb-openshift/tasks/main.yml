@@ -9,7 +9,7 @@
     register: olddc
 
   - name: Backup source database
-    shell:  oc exec -n {{ namespace }} {{ oldpod.stdout }} -- /bin/bash -c "mysqldump -h 127.0.0.1 -u {{ mysql_user }} -p{{ mysql_password }} {{ mysql_database }} > /tmp/db.dump"
+    shell:  oc exec -n {{ namespace }} {{ oldpod.stdout }} -- /bin/bash -c "mysqldump -h 127.0.0.1 -u {{ mariadb_user }} -p{{ mariadb_password }} {{ mariadb_database }} > /tmp/db.dump"
 
   - name: Copy over db backup
     shell: oc cp -n {{ namespace }} {{ oldpod.stdout }}:/tmp/db.dump /tmp/db.dump
@@ -54,7 +54,7 @@
     shell: oc cp -n {{ namespace }} /tmp/db.dump {{ newpod.stdout }}:tmp/db.dump
 
   - name: Restore database
-    shell:  oc exec -n {{ namespace }} {{ newpod.stdout }} -- /bin/bash -c "mysql -h 127.0.0.1 -u {{ mysql_user }} -p{{ mysql_password }} {{ mysql_database }} < /tmp/db.dump"
+    shell:  oc exec -n {{ namespace }} {{ newpod.stdout }} -- /bin/bash -c "mysql -h 127.0.0.1 -u {{ mariadb_user }} -p{{ mariadb_password }} {{ mariadb_database }} < /tmp/db.dump"
 
   - name: Remove old dc
     openshift_v1_deployment_config:
@@ -84,7 +84,7 @@
       DB_TYPE: "mysql"
       DB_HOST: "{{ service_name }}"
       DB_PORT: "3306"
-      DB_USER: "{{ mysql_user }}"
-      DB_PASSWORD: "{{ mysql_password }}"
-      DB_NAME: "{{ mysql_database }}"
+      DB_USER: "{{ mariadb_user }}"
+      DB_PASSWORD: "{{ mariadb_password }}"
+      DB_NAME: "{{ mariadb_database }}"
   when: state == "present"
