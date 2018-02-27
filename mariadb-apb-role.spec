@@ -5,7 +5,7 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.1.6
+Version:	1.1.7
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
@@ -32,6 +32,12 @@ mv roles %{buildroot}/opt/ansible/roles
 /opt/ansible/roles
 
 %changelog
+* Tue Feb 27 2018 Jason Montleon <jmontleo@redhat.com> 1.1.7-1
+- Bug 1549019 - Work around connection upgrade issues with oc cp
+  (jmontleo@redhat.com)
+- Bug 1549019 - Partially work around connection upgrade issues
+  (jmontleo@redhat.com)
+
 * Thu Feb 22 2018 David Zager <david.j.zager@gmail.com> 1.1.6-1
 - Bug 1510294 Remove repetitive/false descriptions, set consistent titles
   (jmontleo@redhat.com)
