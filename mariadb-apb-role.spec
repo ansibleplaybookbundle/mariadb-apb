@@ -5,7 +5,7 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.1.10
+Version:	1.2.0
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
