@@ -1,36 +1,4 @@
 ---
-## Shared parameters
-_params: &_params
-  - name: mariadb_database
-    default: admin
-    type: string
-    description: MariaDB default database name
-    title: MariaDB Database Name
-    pattern: "^[a-zA-Z0-9_]*[a-zA-Z_]+[a-zA-Z0-9_]*$"
-    required: true
-  - name: mariadb_root_password
-    type: string
-    display_type: password
-    required: true
-    title: MariaDB Root Password
-  - name: mariadb_user
-    default: admin
-    type: string
-    pattern: "^[a-zA-Z0-9_]*[a-zA-Z_]+[a-zA-Z0-9_]*$"
-    required: true
-    title: MariaDB User
-  - name: mariadb_password
-    type: string
-    required: true
-    display_type: password
-    title: MariaDB Password
-  - name: mariadb_version
-    default: "10.2"
-    enum: ['10.2' , '10.1', '10.0']
-    type: enum
-    title: MariaDB Version
-    required: true
-    updatable: true
 
 version: 1.0
 name: mariadb-apb
@@ -58,7 +26,37 @@ plans:
     metadata:
       displayName: Development
       cost: $0.00
-    parameters: *_params
+    parameters:
+      - name: mariadb_database
+        default: admin
+        type: string
+        description: MariaDB default database name
+        title: MariaDB Database Name
+        pattern: "^[a-zA-Z0-9_]*[a-zA-Z_]+[a-zA-Z0-9_]*$"
+        required: true
+      - name: mariadb_root_password
+        type: string
+        display_type: password
+        required: true
+        title: MariaDB Root Password
+      - name: mariadb_user
+        default: admin
+        type: string
+        pattern: "^[a-zA-Z0-9_]*[a-zA-Z_]+[a-zA-Z0-9_]*$"
+        required: true
+        title: MariaDB User
+      - name: mariadb_password
+        type: string
+        required: true
+        display_type: password
+        title: MariaDB Password
+      - name: mariadb_version
+        default: "10.2"
+        enum: ['10.2' , '10.1', '10.0']
+        type: enum
+        title: MariaDB Version
+        required: true
+        updatable: true
     updates_to:
       - prod
   - name: prod
@@ -67,6 +65,42 @@ plans:
     metadata:
       displayName: Production
       cost: $0.00
-    parameters: *_params
+    parameters:
+      - name: mariadb_database
+        default: admin
+        type: string
+        description: MariaDB default database name
+        title: MariaDB Database Name
+        pattern: "^[a-zA-Z0-9_]*[a-zA-Z_]+[a-zA-Z0-9_]*$"
+        required: true
+      - name: mariadb_root_password
+        type: string
+        display_type: password
+        required: true
+        title: MariaDB Root Password
+      - name: mariadb_user
+        default: admin
+        type: string
+        pattern: "^[a-zA-Z0-9_]*[a-zA-Z_]+[a-zA-Z0-9_]*$"
+        required: true
+        title: MariaDB User
+      - name: mariadb_password
+        type: string
+        required: true
+        display_type: password
+        title: MariaDB Password
+      - name: mariadb_version
+        default: "10.2"
+        enum: ['10.2' , '10.1', '10.0']
+        type: enum
+        title: MariaDB Version
+        required: true
+        updatable: true
+      - name: volume_size
+        type: enum
+        default: '1Gi'
+        enum: ['1Gi', '5Gi', '10Gi']
+        title: MariaDB Volume Size
+        required: true
     updates_to:
       - dev
