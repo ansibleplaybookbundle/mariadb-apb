@@ -20,7 +20,8 @@ metadata:
   providerDisplayName: "Red Hat, Inc."
 plans:
   - name: dev
-    description: This plan deploys a single MariaDB instance with ephemeral storage
+    description:
+      This plan deploys a single MariaDB instance with ephemeral storage
     free: true
     default: true
     metadata:
@@ -52,7 +53,7 @@ plans:
         title: MariaDB Password
       - name: mariadb_version
         default: "10.2"
-        enum: ['10.2' , '10.1', '10.0']
+        enum: ['10.2', '10.1', '10.0']
         type: enum
         title: MariaDB Version
         required: true
@@ -60,7 +61,8 @@ plans:
     updates_to:
       - prod
   - name: prod
-    description: This plan deploys a single MariaDB instance with 10 GiB of persistent storage
+    description:
+      This plan deploys a single MariaDB instance with persistent storage
     free: true
     metadata:
       displayName: Production
@@ -91,12 +93,12 @@ plans:
         title: MariaDB Password
       - name: mariadb_version
         default: "10.2"
-        enum: ['10.2' , '10.1', '10.0']
+        enum: ['10.2', '10.1', '10.0']
         type: enum
         title: MariaDB Version
         required: true
         updatable: true
-      - name: volume_size
+      - name: mariadb_volume_size
         type: enum
         default: '1Gi'
         enum: ['1Gi', '5Gi', '10Gi']

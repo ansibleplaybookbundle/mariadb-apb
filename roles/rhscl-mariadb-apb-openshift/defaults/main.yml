@@ -1,9 +1,0 @@
----
-service_name: "{{ lookup('env','SERVICE_NAME') | default('rhscl-mariadb', true) }}"
-namespace: "{{ lookup('env','NAMESPACE') | default('rhscl-mariadb-apb', true) }}"
-mariadb_database: "{{ lookup('env','MARIADB_DATABASE') | default('', true) }}"
-mariadb_user: "{{ lookup('env','MARIADB_USER') | default('admin', true) }}"
-volume_size: "{{ lookup('env','VOLUME_SIZE') | default('1Gi', true) }}"
-mariadb_version: "{{ lookup('env','MARIADB_VERSION') | default('10.0', true) }}"
-image: "registry.access.redhat.com/rhscl/mariadb-{{ mariadb_version | replace('.', '') }}-rhel7"
-state: present

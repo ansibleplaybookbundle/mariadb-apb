@@ -1,0 +1,19 @@
+---
+
+# Defaults for values we could expect from a broker
+_apb_plan_id: default
+_apb_service_class_id: 0
+_apb_service_instance_id: 0
+
+app_name: "mariadb-{{ _apb_service_instance_id }}"
+app_image: "registry.access.redhat.com/rhscl/mariadb-{{ mariadb_version | replace('.', '') }}-rhel7"
+namespace: "{{ lookup('env','NAMESPACE') | default('mediawiki', true) }}"
+
+# Mariadb defaults
+mariadb_port: 3306
+mariadb_database: admin
+mariadb_root_password: changeme
+mariadb_user: admin
+mariadb_password: changeme
+mariadb_volume_size: 1Gi
+mariadb_version: '10.2'
