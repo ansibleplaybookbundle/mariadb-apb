@@ -15,4 +15,4 @@ spec:
   ports:
     - protocol: TCP
       port: {{ mariadb_port }}
-      target_port: {{mariadb_port }}
+      targetPort: {{mariadb_port }}

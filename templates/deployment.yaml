@@ -1,9 +1,10 @@
 ---
 
-apiVersion: v1
 {% if cluster == 'kubernetes' %}
+apiVersion: {{ deployment_api_version }}
 kind: Deployment
 {% else %}
+apiVersion: {{ deploymentconfig_api_version }}
 kind: DeploymentConfig
 {% endif %}
 metadata:
@@ -61,14 +62,14 @@ spec:
           terminationMessagePath: /dev/termination-log
           workingDir: /
           ports:
-            - container_port: {{ mariadb_port }}
+            - containerPort: {{ mariadb_port }}
               protocol: TCP
 {% if _apb_plan_id == 'prod' %}
-          volume_mounts:
+          volumeMounts:
             - name: mariadb
-              mount_path: /var/lib/mysql
+              mountPath: /var/lib/mysql
       volumes:
         - name: mariadb
-          persistent_volume_claim:
-            claim_name: {{ app_name }}
+          persistentVolumeClaim:
+            claimName: {{ app_name }}
 {% endif %}
