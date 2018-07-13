@@ -1,6 +1,6 @@
 ---
 
-version: 1.0
+version: 1.0.0
 name: mariadb-apb
 description: Mariadb apb implementation
 bindable: true
