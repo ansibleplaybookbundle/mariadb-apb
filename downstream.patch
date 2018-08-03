@@ -1,0 +1,34 @@
+diff --git a/apb.yml b/apb.yml
+index f3551ae..ad8efa3 100644
+--- a/apb.yml
++++ b/apb.yml
+@@ -12,9 +12,9 @@ metadata:
+   documentationUrl: "https://mariadb.com/kb/en/mariadb/documentation/"
+   longDescription: "Deploys a bindable mariadb instance"
+   dependencies:
+-    - 'docker.io/centos/mariadb-100-centos7'
+-    - 'docker.io/centos/mariadb-101-centos7'
+-    - 'docker.io/centos/mariadb-102-centos7'
++    - 'registry.redhat.io/rhscl/mariadb-100-rhel7'
++    - 'registry.redhat.io/rhscl/mariadb-101-rhel7'
++    - 'registry.redhat.io/rhscl/mariadb-102-rhel7'
+   displayName: "MariaDB (APB)"
+   console.openshift.io/iconClass: icon-mariadb
+   providerDisplayName: "Red Hat, Inc."
+diff --git a/defaults/main.yml b/defaults/main.yml
+index 7c68b46..30d0517 100644
+--- a/defaults/main.yml
++++ b/defaults/main.yml
+@@ -6,9 +6,9 @@ _apb_service_class_id: 0
+ _apb_service_instance_id: 0
+ 
+ app_name: "mariadb-{{ _apb_service_instance_id }}"
+-registry_url: docker.io
+-registry_org: centos
+-image_version: centos7
++registry_url: registry.redhat.io
++registry_org: rhscl
++image_version: rhel7
+ app_image: "{{ registry_url }}/{{ registry_org }}/mariadb-{{ mariadb_version | replace('.', '') }}-{{ image_version }}"
+ namespace: "{{ lookup('env','NAMESPACE') | default('mediawiki', true) }}"
+ 
