@@ -12,7 +12,6 @@ metadata:
   documentationUrl: "https://mariadb.com/kb/en/mariadb/documentation/"
   longDescription: "Deploys a bindable mariadb instance"
   dependencies:
-    - 'docker.io/centos/mariadb-100-centos7'
     - 'docker.io/centos/mariadb-101-centos7'
     - 'docker.io/centos/mariadb-102-centos7'
   displayName: "MariaDB (APB)"
@@ -53,7 +52,7 @@ plans:
         title: MariaDB Password
       - name: mariadb_version
         default: "10.2"
-        enum: ['10.2', '10.1', '10.0']
+        enum: ['10.2', '10.1']
         type: enum
         title: MariaDB Version
         required: true
@@ -93,7 +92,7 @@ plans:
         title: MariaDB Password
       - name: mariadb_version
         default: "10.2"
-        enum: ['10.2', '10.1', '10.0']
+        enum: ['10.2', '10.1']
         type: enum
         title: MariaDB Version
         required: true

@@ -2,14 +2,12 @@ diff --git a/apb.yml b/apb.yml
 index f3551ae..ad8efa3 100644
 --- a/apb.yml
 +++ b/apb.yml
-@@ -12,9 +12,9 @@ metadata:
+@@ -12,8 +12,8 @@ metadata:
    documentationUrl: "https://mariadb.com/kb/en/mariadb/documentation/"
    longDescription: "Deploys a bindable mariadb instance"
    dependencies:
--    - 'docker.io/centos/mariadb-100-centos7'
 -    - 'docker.io/centos/mariadb-101-centos7'
 -    - 'docker.io/centos/mariadb-102-centos7'
-+    - 'registry.redhat.io/rhscl/mariadb-100-rhel7'
 +    - 'registry.redhat.io/rhscl/mariadb-101-rhel7'
 +    - 'registry.redhat.io/rhscl/mariadb-102-rhel7'
    displayName: "MariaDB (APB)"
