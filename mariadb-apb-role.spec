@@ -5,7 +5,7 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.3.4
+Version:	1.3.5
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
@@ -35,6 +35,9 @@ mv defaults tasks templates vars %{buildroot}/opt/ansible/roles/mariadb-apb
 /opt/ansible/roles
 
 %changelog
+* Wed Aug 15 2018 David Zager <david.j.zager@gmail.com> 1.3.5-1
+- Remove deprecated application container versions (#43) (jmontleo@redhat.com)
+
 * Fri Aug 10 2018 David Zager <david.j.zager@gmail.com> 1.3.4-1
 - Bug 1593183 Adjust PVC mountPath (#42) (jmontleo@redhat.com)
 - Remove asb-module dependency (david.j.zager@gmail.com)
