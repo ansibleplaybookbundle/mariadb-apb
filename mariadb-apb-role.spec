@@ -5,7 +5,7 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.1.10
+Version:	1.1.11
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
@@ -32,6 +32,9 @@ mv roles %{buildroot}/opt/ansible/roles
 /opt/ansible/roles
 
 %changelog
+* Thu Aug 16 2018 David Zager <david.j.zager@gmail.com> 1.1.11-1
+- Adjust PVC Mount Point (#44) (jmontleo@redhat.com)
+
 * Fri Mar 02 2018 Jason Montleon <jmontleo@redhat.com> 1.1.10-1
 - Bug 1544606 - Ensure subsequent updates do not fail because dir exists
   (jmontleo@redhat.com)
