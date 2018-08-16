@@ -67,7 +67,7 @@ spec:
 {% if _apb_plan_id == 'prod' %}
           volumeMounts:
             - name: mariadb
-              mountPath: /var/lib/mysql
+              mountPath: /var/lib/mysql/data
       volumes:
         - name: mariadb
           persistentVolumeClaim:
