@@ -5,7 +5,7 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.2.5
+Version:	1.2.6
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
@@ -32,6 +32,9 @@ mv defaults tasks templates vars %{buildroot}/opt/ansible/roles/mariadb-apb
 /opt/ansible/roles
 
 %changelog
+* Thu Aug 16 2018 David Zager <david.j.zager@gmail.com> 1.2.6-1
+- Adjust PVC Mount Point (#45) (jmontleo@redhat.com)
+
 * Thu May 24 2018 David Zager <david.j.zager@gmail.com> 1.2.5-1
 - Include vars for ansible version >= 2.6 (#33) (dzager@redhat.com)
 
