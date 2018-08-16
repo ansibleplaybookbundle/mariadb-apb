@@ -40,7 +40,7 @@
       security_context: {}
       termination_message_path: /dev/termination-log
       volume_mounts:
-      - mount_path: /var/lib/mysql
+      - mount_path: /var/lib/mysql/data
         name: mariadb-data
       working_dir: /
     dns_policy: ClusterFirst
