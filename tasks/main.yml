@@ -5,15 +5,6 @@
     description: "0%: Starting"
   when: in_cluster
 
-- name: 'Determine cluster type'
-  command: oc version
-  register: oc_version
-  ignore_errors: yes
-
-- name: 'Set facts'
-  set_fact:
-    cluster: '{{ "openshift" if "openshift" in lookup("k8s", cluster_info="version") else "kubernetes" }}'
-
 - when: apb_action == 'update'
   block:
     - name: Backup database
