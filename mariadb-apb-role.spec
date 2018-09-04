@@ -5,7 +5,7 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.3.6
+Version:	1.3.7
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
@@ -35,6 +35,9 @@ mv defaults tasks templates vars %{buildroot}/opt/ansible/roles/mariadb-apb
 /opt/ansible/roles
 
 %changelog
+* Tue Sep 04 2018 Dylan Murray <dymurray@redhat.com> 1.3.7-1
+- Bug 1625161 - Typecast namespace to string (#48) (dymurray@redhat.com)
+
 * Thu Aug 30 2018 Dylan Murray <dymurray@redhat.com> 1.3.6-1
 - Bug 1584104 - No TTY (#46) (dzager@redhat.com)
 - Check for capabilities instead of checking for openshift
