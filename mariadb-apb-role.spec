@@ -5,14 +5,14 @@
 %endif
 
 Name:		mariadb-apb-role
-Version:	1.3.7
+Version:	1.4.0
 Release:	1%{build_timestamp}%{?dist}
 Summary:	Ansible Playbook for MariaDB APB
 
 License:	ASL 2.0
 URL:		https://github.com/ansibleplaybookbundle/RHSCL-MariaDB-APB
 Source0:	https://github.com/ansibleplaybookbundle/RHSCL-MariaDB-APB/archive/%{name}-%{version}.tar.gz
-BuildArch:  	noarch
+BuildArch:	noarch
 
 
 %description
